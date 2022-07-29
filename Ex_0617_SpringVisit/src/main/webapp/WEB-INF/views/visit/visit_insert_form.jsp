@@ -8,7 +8,7 @@
 <script>
 	function send(f){
 		
-		//유효성체크 했다 치자...
+		//유효성체크
 		/* var photo = f.photo.value;
 		if(photo == '') {
 			alert(...)
