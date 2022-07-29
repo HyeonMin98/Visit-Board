@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean id="factoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="ds"/> <!-- 어떤 DB로 접근해야 하는지 알게 된다. -->
+		<property name="configLocation" 
+			value="classpath:config/mybatis/mybatis-config.xml"/> <!-- 어떤 매퍼로 접근을 해야하는지 알고있다.-->
+	</bean>	
+	
+	<!-- 매퍼로 접근하는 경로를 아는애가 factory고 실제로 접근하는 애가 sqlSession -->
+	<bean id="sqlSessionBean" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="factoryBean"/>
+	</bean>
+</beans>
